@@ -103,7 +103,26 @@
   </build>
   <profiles>
     <profile>
-      <id>github</id>
+      <id>github-build</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <repositories>
+        <repository>
+          <id>vv-solutions</id>
+          <url>https://maven.pkg.github.com/vv-solutions/packages</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>github-deploy</id>
       <activation>
         <property>
           <name>useGitHubPackages</name>
