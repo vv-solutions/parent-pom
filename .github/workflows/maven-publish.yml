@@ -22,7 +22,7 @@ jobs:
         run: |
           mvn versions:set -DnewVersion=1.0.${{ github.run_number }} -P github-build
           
-          mvn clean install -P azure-build
+          mvn clean install -P github-build
           
           mvn --batch-mode -DuseGitHubPackages=true deploy -P github-deploy,github-build
         env:
