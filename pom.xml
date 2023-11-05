@@ -114,9 +114,6 @@
         <repository>
           <id>vv-solutions</id>
           <url>https://maven.pkg.github.com/vv-solutions/packages</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
