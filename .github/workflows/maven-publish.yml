@@ -18,6 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Create settings XML
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          repositories: '[{ "id": "central", "url": "https://repo1.maven.org/maven2" },{ "id": "github", "url": "https://maven.pkg.github.com/vv-solutions/packages" }]'
+          servers: '[{ "id": "github", "username": ${{ secrets.PACKAGE_DEPLOY_USERNAME }}, "password": ${{ secrets.PACKAGE_DEPLOY_TOKEN }} }]'
+          output_file: settings.xml
+
       - name: Deploy to GitHub
         run: |
           mvn versions:set -DnewVersion=1.0.${{ github.run_number }} -P github-build --settings settings.xml
