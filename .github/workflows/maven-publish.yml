@@ -24,6 +24,6 @@ jobs:
           
           mvn clean install -P github-build
           
-          mvn deploy -P github-deploy,github-build
+          mvn -DuseGitHubPackages=true deploy -P github-deploy,github-build
         env:
           GITHUB_TOKEN: ${{ secrets.PACKAGE_DEPLOY_TOKEN }}
