@@ -20,10 +20,11 @@ jobs:
 
       - name: Deploy to GitHub
         run: |
-          mvn versions:set -DnewVersion=1.0.${{ github.run_number }} -P github-build
+          mvn versions:set -DnewVersion=1.0.${{ github.run_number }} -P github-build --settings settings.xml
           
-          mvn clean install -P github-build
+          mvn clean install -P github-build --settings settings.xml
           
-          mvn --batch-mode -DuseGitHubPackages=true deploy -P github-deploy,github-build
+          mvn --batch-mode -DuseGitHubPackages=true deploy -P github-deploy,github-build --settings settings.xml
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGE_DEPLOY_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.PACKAGE_DEPLOY_TOKEN }}
+          USER_NAME: ${{ secrets.PACKAGE_DEPLOY_USERNAME }}
