@@ -32,6 +32,3 @@ jobs:
           mvn clean install -P github-build --settings settings.xml
           
           mvn --batch-mode -DuseGitHubPackages=true deploy -P github-deploy,github-build --settings settings.xml
-        env:
-          ACCESS_TOKEN: ${{ secrets.PACKAGE_DEPLOY_TOKEN }}
-          USER_NAME: ${{ secrets.PACKAGE_DEPLOY_USERNAME }}
